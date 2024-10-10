@@ -295,24 +295,34 @@ Penjelasan beberapa poin penting dari matriks ini:
 - Di sisi lain, beberapa fitur menunjukkan korelasi yang rendah atau negatif, seperti BIL dan CHOL (-0.33), yang menunjukkan hubungan negatif antara Bilirubin (BIL) dan Kolesterol (CHOL).
 
 ## Data Preparation
+Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
+1. **Split Data**  
+   Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model.
+   
+    ```python
+    from sklearn.model_selection import train_test_split
+    X = df.drop(["Category"], axis=1)  # Drop kolom target
+    y = df["Category"]  # Kolom target
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
+    ```
+    
+   Kemudian diperoleh hasil pembagian data masing-masing, yaitu sebagai berikut,
+   
+    ```python
+    Total # of samples in the whole dataset: 615
+    Total # of samples in train dataset: 492
+    Total # of samples in test dataset: 123
+    ```
 
+2. **Normalisasi**
+   Pada proyek ini menggunakan MinMaxScaler, yaitu teknik normalisasi yang mentransformasikan nilai fitur atau variabel ke dalam rentang [0,1] yang berarti bahwa nilai minimum dan maksimum dari fitur/variabel masing-masing adalah 0 dan 1
+   
+    ```python
+    from sklearn.preprocessing import MinMaxScaler
 
-<br>
-=====
+    scaler = MinMaxScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    ```
 
-##### Gambar Korelasi
-
-<p align="center">
-  <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/korelasi.png" alt="docs12" width="470">
-</p>
-
-#### Link Referensi
-[Link Referensi Artikel](https://ejournal.nusamandiri.ac.id/index.php/pilar/article/view/149/126)
-
-#### Sitasi
-<p align="justify">
-Hepatitis amat sangat bahaya [1](https://ejournal.nusamandiri.ac.id/index.php/pilar/article/view/149/126).
-</p>
-
-## References
-[1]: https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732
+## Modeling
