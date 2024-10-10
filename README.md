@@ -34,7 +34,8 @@ Untuk mencapai tujuan tersebut, dalam proyek ini akan dibuat beberapa model yang
 
 ## Data Understanding
 Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform UCI Machine Learning Repository yang Diterbitkan dalam Journal of Laboratory and Precision Medicine. Dataset ini terdiri dari 1 file csv.
-1.**Unnamed: 0** : Nomor urut pasien pada file CSV, hanya digunakan untuk keperluan identifikasi internal dalam dataset dan tidak berperan dalam analisis model.
+
+1. **Unnamed: 0** : Nomor urut pasien pada file CSV, hanya digunakan untuk keperluan identifikasi internal dalam dataset dan tidak berperan dalam analisis model.<br>
 2. **Category** : Kategori diagnosis pasien, yang menunjukkan status kesehatan terkait Hepatitis C:
    - 0 = Blood Donor (Pendonor darah)
    - 0s = Suspect Blood Donor (Pendonor darah yang dicurigai)
@@ -231,6 +232,70 @@ Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform U
     <td>Health and Medicinee</td>
   </tr>
 </table>
+
+#### Berikut Visualisasi data dengan Boxplot:<br>
+<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/boxplot.png" style="zoom:50%;" /> <br>
+Interpretasi boxplot untuk data hepatitis C:
+- Boxplot Age: Terdapat outlier pada usia tertentu, namun individu dengan usia tersebut mungkin ada, sehingga data tidak dihapus.
+- Boxplot ALB: Outlier signifikan, tetapi kadar albumin tinggi bisa menunjukkan kesehatan baik, tetap dipertimbangkan.
+- Boxplot ALT: Outlier dengan nilai tinggi dapat menunjukkan kerusakan hati, jadi data tetap dipertahankan.
+- Boxplot AST: Terdapat outlier yang menunjukkan kondisi medis serius, data tidak dihapus.
+- Boxplot BIL: Outlier dapat merefleksikan kondisi medis relevan, sehingga tetap dipertahankan.
+- Boxplot CHE: Meskipun ada outlier, kadar cholinesterase tinggi mungkin tidak signifikan, tetap dipertimbangkan.
+- Boxplot GGT: Outlier mencolok dapat menunjukkan masalah hati, jadi data tidak dihapus.
+- Boxplot PROT: Outlier pada kadar protein total mungkin menunjukkan status gizi baik, tetap dipertimbangkan.
+
+
+Sehingga dilakukan proses pembersihan outliers dengan metode IQR (Inter Quartile Range).
+
+  ```python
+# Hitung Q1 dan Q3 untuk semua kolom numerik
+Q1 = df.select_dtypes(include=['float64', 'int64']).quantile(0.25)
+Q3 = df.select_dtypes(include=['float64', 'int64']).quantile(0.75)
+
+# Hitung IQR (Interquartile Range)
+IQR = Q3 - Q1
+
+# Hapus outlier dari dataset berdasarkan aturan IQR
+df_clean = df[~((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | 
+                (df.select_dtypes(include=['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)]
+
+# Cek ukuran dataset setelah outlier dihapus
+print(f"Ukuran dataset setelah outlier dihapus: {df_clean.shape}")
+  ```
+
+#### Univariate Analysis
+Melakukan proses analisis data univariate pada fitur-fitur numerik. Proses analisis ini menggunakan bantuan visualisasi histogram untuk masing-masing fitur numerik
+<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/univariate.png" style="zoom:50%;" /> <br>
+Dari data histogram di atas diperoleh informasi, yaitu:
+- Kategori: Distribusi tidak merata, dengan lebih dari 50% data di kategori 0 (Blood Donor) dan 1 (Hepatitis).
+- Usia: Cenderung normal, sebagian besar individu berusia 40-60 tahun, dengan beberapa outlier di usia lebih tua.
+- ALB (Albumin): Mayoritas data berada di kisaran 35-45 g/L, simetris dengan beberapa outlier rendah.
+- ALP (Alkaline Phosphatase): Lebih dari 50% data di bawah 150 U/L, puncak terbanyak di 50-100 U/L.
+- ALT (Alanine Aminotransferase): Kebanyakan nilai di bawah 100 U/L, dengan outlier tinggi menunjukkan kerusakan hati.
+- AST (Aspartate Aminotransferase): Distribusi miring ke kanan, banyak nilai rendah dan outlier yang menunjukkan kerusakan hati.
+- BIL (Bilirubin): Sebagian besar nilai di bawah 50 μmol/L, menunjukkan status kesehatan baik.
+- CHE (Cholinesterase): Kadar kolinesterase mayoritas di kisaran 5-10 U/L, dengan beberapa outlier.
+- CHOL (Cholesterol): Mayoritas kadar kolesterol antara 4-6 mmol/L, puncak di 5 mmol/L.
+- CREA (Creatinine): Sebagian besar nilai di kisaran 60-100 μmol/L, dengan beberapa outlier.
+- GGT (Gamma-Glutamyl Transferase): Mayoritas nilai di bawah 150 U/L, dengan beberapa nilai tinggi.
+- PROT (Protein): Kadar protein mayoritas di 60-80 g/L, puncak di sekitar 70 g/L.
+
+#### Multivariate Analysis
+Visualisasi dilakukan dengan bantuan library Seaborn menggunakan fungsi pairplot, di mana parameter diag_kind diatur ke kde untuk memperlihatkan perkiraan distribusi probabilitas dari masing-masing fitur numerik serta hubungan antar fitur.
+<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/multivariate.png" style="zoom:80%;" /> <br>
+
+#### Correlation Matrix with Heatmap
+Melakukan pengecekan korelasi antar fitur numerik dengan menggunakan visualisasi diagram heatmap correlation matrix.
+<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/korelasi.png" style="zoom:60%;" /> <br>
+Penjelasan beberapa poin penting dari matriks ini:
+- ALB dan PROT memiliki korelasi yang paling kuat (0.55), yang menunjukkan bahwa ada hubungan positif yang signifikan antara level Albumin (ALB) dan Protein (PROT).
+- GGT dan AST menunjukkan korelasi positif yang cukup kuat (0.49), mengindikasikan adanya hubungan antara Gamma-Glutamyl Transferase (GGT) dan Aspartate Aminotransferase (AST). Ini bisa relevan secara klinis karena kedua enzim ini sering dikaitkan dengan fungsi hati.
+- CHE dan CHOL juga memiliki korelasi yang cukup tinggi (0.42), yang bisa menunjukkan hubungan antara Cholinesterase (CHE) dan kolesterol (CHOL).
+- Di sisi lain, beberapa fitur menunjukkan korelasi yang rendah atau negatif, seperti BIL dan CHOL (-0.33), yang menunjukkan hubungan negatif antara Bilirubin (BIL) dan Kolesterol (CHOL).
+
+## Data Preparation
+
 
 <br>
 =====
