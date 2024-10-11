@@ -326,3 +326,208 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
     ```
 
 ## Modeling
+<p align="justify">Pada tahap modeling ini, dibuat beberapa model dengan algoritma yang berbeda-beda. Pada proyek ini, akan dibuat 4 model, di antaranya yaitu menggunakan KNN, SVM, Random Forest, dan Naive Bayes, yang masing-masing akan dilatih menggunakan data yang sama dan dievaluasi berdasarkan akurasi untuk membandingkan kinerja mereka.</p>
+
+    ```python  
+    from sklearn.neighbors import KNeighborsClassifier  
+    from sklearn.ensemble import RandomForestClassifier  
+    from sklearn.svm import SVC  
+    from sklearn.naive_bayes import GaussianNB  
+    from sklearn.metrics import accuracy_score 
+    models = pd.DataFrame(index=['accuracy_score'], 
+                      columns=['KNN', 'RandomForest', 'SVM', 'Naive Bayes'])
+    ```
+    
+1. K-Nearest Neighbor (KNN)
+   <p align="justify">Algoritma K-Nearest Neighbors (KNN) untuk membangun model prediksi. Model dilatih pada data training (X_train, y_train) dengan 3 tetangga terdekat (n_neighbors=3). Setelah itu, dilakukan prediksi pada data testing (X_test) menggunakan model yang telah dilatih, dan hasil prediksi disimpan dalam variabel knn_pred. Akurasi model dihitung menggunakan accuracy_score dengan membandingkan prediksi terhadap nilai sebenarnya (y_test), lalu hasilnya disimpan ke dalam tabel models pada kolom KNN </p>
+
+   ```python  
+    # Buat model prediksi dengan KNN
+    model_knn = KNeighborsClassifier(n_neighbors=3)
+    model_knn.fit(X_train, y_train)
+    # Lakukan prediksi dengan model KNN
+    knn_pred = model_knn.predict(X_test)
+
+    # Hitung metriks akurasi dan simpan hasilnya
+    models.loc['accuracy_score','KNN'] = accuracy_score(y_test, knn_pred)
+    ```
+
+-  KNN memiliki kelebihan dan kekurangannya adalah sebagai berikut:
+    
+    - Kelebihan: Algoritma ini mudah digunakan dan dipahami, menjadikannya pilihan yang baik untuk pengguna pemula. Selain itu, KNN juga tidak memerlukan asumsi spesifik tentang distribusi data, sehingga lebih fleksibel dalam menyesuaikan diri dengan variasi data yang ada.
+    
+    - Kekurangan: Di sisi lain, salah satu kelemahan KNN adalah efisiensi waktu komputasi. Proses pencarian tetangga terdekat dapat menjadi sangat lambat, terutama pada dataset yang besar. Kelemahan lainnya adalah risiko overfitting, yang dapat terjadi jika dataset yang digunakan relatif kecil, sehingga menghasilkan pola yang tidak umum pada data uji.
+      
+2. Support Vector Machine (SVM)
+   <p align="justify">Algoritma Support Vector Machine (SVM) dengan kernel linear untuk membangun model prediksi. Model SVM dibuat dengan memilih kernel linear (kernel='linear'), namun bisa juga diganti dengan kernel lain seperti 'rbf' atau 'poly' sesuai kebutuhan. Model kemudian dilatih menggunakan data training (X_train, y_train). Setelah model terlatih, dilakukan prediksi pada data testing (X_test) dan hasil prediksi disimpan dalam variabel svm_pred. Akurasi model dihitung menggunakan accuracy_score dengan membandingkan hasil prediksi terhadap nilai sebenarnya (y_test), dan disimpan dalam tabel models pada kolom SVM. </p>
+
+   ```python  
+    # Membuat model SVM dengan kernel linear
+    model_svm = SVC(kernel='linear')  # Anda bisa mengganti 'linear' dengan 'rbf', 'poly', dsb.
+
+    # Latih model SVM dengan data pelatihan
+    model_svm.fit(X_train, y_train)
+    # Lakukan prediksi dengan model SVM
+    svm_pred = model_svm.predict(X_test)
+
+    # Hitung metriks akurasi dan simpan hasilnya
+    models.loc['accuracy_score', 'SVM'] = accuracy_score(y_test, svm_pred)
+    ```
+
+-  SVM memiliki kelebihan dan kekurangannya adalah sebagai berikut:
+    
+    - Kelebihan: SVM (Support Vector Machine) dikenal karena akurasi tinggi dalam klasifikasi, bahkan pada dataset yang kompleks dan tidak linier, berkat kemampuannya untuk menemukan hyperplane optimal. Selain itu, strategi Structural Risk Minimization yang diterapkan oleh SVM membantu model dalam generalisasi, sehingga dapat memberikan prediksi yang baik pada data baru yang belum pernah dilihat sebelumnya.
+    
+    - Kekurangan: SVM juga memiliki kelemahan. Salah satunya adalah waktu pelatihan yang tinggi, terutama ketika dihadapkan pada dataset besar, yang dapat membuatnya tidak efisien dalam beberapa situasi. Selain itu, kompleksitas implementasi SVM dapat menjadi tantangan, karena pemilihan kernel yang tepat dan pengaturan hyperparameter yang sesuai sangat penting untuk mencapai performa optimal.
+      
+3. Random Forest(SVM)
+   <p align="justify">Algoritma Random Forest dengan model RandomForestClassifier() dibuat dan dilatih menggunakan data training (X_train, y_train). Setelah model dilatih, dilakukan prediksi terhadap data testing (X_test), dengan hasil prediksi disimpan dalam variabel rf_pred. Akurasi model dihitung menggunakan fungsi accuracy_score dengan membandingkan prediksi terhadap nilai asli (y_test), dan hasilnya disimpan ke dalam tabel models pada kolom RandomForest. </p>
+
+   ```python  
+    # Buat model prediksi dengan Random Forest
+    model_rf = RandomForestClassifier()
+    model_rf.fit(X_train, y_train)
+    # Lakukan prediksi dengan model Random Forest
+    rf_pred = model_rf.predict(X_test)
+
+    # Hitung metriks akurasi dan simpan hasilnya
+    models.loc['accuracy_score','RandomForest'] = accuracy_score(y_test, rf_pred)
+    ```
+
+-  Random Forest memiliki kelebihan dan kekurangannya adalah sebagai berikut:
+    
+    - Kelebihan: Algoritma ini sangat efektif dalam machine learning karena kemampuannya mengatasi overfitting dan stabilitas dalam prediksi. Overfitting sering menjadi masalah pada model yang terlalu kompleks, tetapi Random Forest menggunakan teknik Bootstrap Aggregating (bagging) untuk meningkatkan generalisasi pada data baru. Selain itu, algoritma ini lebih stabil dibandingkan pohon keputusan tunggal, karena menggabungkan beberapa pohon yang independen, sehingga dapat menangani noise dan variasi dalam data dengan lebih baik
+    
+    - Kekurangan: interpretabilitas yang terbatas dan kebutuhan untuk mengatur beberapa parameter. Interpretabilitas menjadi tantangan karena banyaknya pohon keputusan yang terlibat, membuat sulit untuk memahami kontribusi setiap fitur. Selain itu, pengaturan parameter yang optimal memerlukan eksperimen yang cermat, yang bisa menjadi rumit tanpa pengetahuan awal tentang dataset.
+      
+4. Naive Bayes
+   <p align="justify">Algoritma Bernoulli Naive Bayes untuk membangun model prediksi. Model BernoulliNB() dibuat dan dilatih dengan data training (X_train, y_train). Setelah model dilatih, prediksi dilakukan pada data testing (X_test) dan hasilnya disimpan dalam variabel nb_pred. Akurasi model dihitung menggunakan fungsi accuracy_score dengan membandingkan hasil prediksi terhadap data asli (y_test), kemudian disimpan dalam tabel models pada kolom Naive Bayes. </p>
+
+   ```python  
+    from sklearn.naive_bayes import BernoulliNB
+    # Buat model prediksi dengan Bernoulli Naive Bayes
+    model_nb = BernoulliNB()
+    model_nb.fit(X_train, y_train)
+    # Lakukan prediksi dengan model Naive Bayes
+    nb_pred = model_nb.predict(X_test)
+
+    # Hitung metriks akurasi dan simpan hasilnya
+    models.loc['accuracy_score','Naive Bayes'] = accuracy_score(y_test, nb_pred)
+    ```
+
+-  Random Forest memiliki kelebihan dan kekurangannya adalah sebagai berikut:
+    
+    - Kelebihan: Algoritma ini mudah dipahami dan diimplementasikan, menjadikannya pilihan yang baik untuk pemula. Selain itu, Naive Bayes efektif dalam menangani masalah klasifikasi multi-kategori, terutama jika asumsi independensi fitur terpenuhi
+    
+    - Kekurangan: Asumsi bahwa fitur-fitur saling mandiri sering kali tidak terpenuhi dalam kondisi nyata, yang dapat mengurangi akurasi model. Kemudian masalah zero probability muncul ketika kata-kata baru yang tidak ada dalam dataset pelatihan dihadapi, meskipun dapat diatasi dengan teknik smoothing.
+ 
+## Evaluation
+
+Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.
+1. Akurasi
+   Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:
+   (gambar)
+2. Precision
+   Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:
+   (gambar)
+3. Recall
+   Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:
+  (gambar)
+4. F1-Score
+   F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:
+   (gambar)
+
+#### Implementasi code
+<p align="justify">Metrik ini dihitung menggunakan classification_report dari library sklearn, yang menghasilkan laporan metrik dalam bentuk dictionary. Setiap metrik untuk masing-masing model kemudian disimpan dalam dictionary models_metrics, di mana akurasi dan nilai metrik lainnya diambil dari bagian "weighted avg" laporan, yang memperhitungkan distribusi kelas yang tidak seimbang. Terakhir, dictionary tersebut dikonversi menjadi DataFrame metrics_df untuk menampilkan hasil dengan format yang lebih terstruktur dan mudah dibaca.</p>
+
+```python  
+    import pandas as pd
+    from sklearn.metrics import classification_report
+
+    # Hitung metrik untuk setiap model
+    knn_report = classification_report(y_test, knn_pred, output_dict=True)
+    svm_report = classification_report(y_test, svm_pred, output_dict=True)
+    rf_report = classification_report(y_test, rf_pred, output_dict=True) 
+    nb_report = classification_report(y_test, nb_pred, output_dict=True)    
+
+    # Ambil akurasi dan metrik lainnya dari laporan
+    models_metrics = {
+      'KNN': {
+        'accuracy': knn_report['accuracy'],
+        'precision': knn_report['weighted avg']['precision'],
+        'recall': knn_report['weighted avg']['recall'],
+        'f1-score': knn_report['weighted avg']['f1-score'],
+      },
+      'SVM': {
+        'accuracy': svm_report['accuracy'],
+        'precision': svm_report['weighted avg']['precision'],
+        'recall': svm_report['weighted avg']['recall'],
+        'f1-score': svm_report['weighted avg']['f1-score'],
+      },
+      'Random Forest': {
+        'accuracy': rf_report['accuracy'],
+        'precision': rf_report['weighted avg']['precision'],
+        'recall': rf_report['weighted avg']['recall'],
+        'f1-score': rf_report['weighted avg']['f1-score'],
+      },
+      'Naive Bayes': {
+        'accuracy': nb_report['accuracy'],
+        'precision': nb_report['weighted avg']['precision'],
+        'recall': nb_report['weighted avg']['recall'],
+        'f1-score': nb_report['weighted avg']['f1-score'],
+      }
+    }
+
+    # Mengubah model metrics menjadi DataFrame untuk tampilan yang lebih baik
+    metrics_df = pd.DataFrame(models_metrics).T
+```
+
+#### Visualization
+<table>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>KNN</td>
+            <td>0.902439</td>
+            <td>0.882627</td>
+            <td>0.902439</td>
+            <td>0.885280</td>
+        </tr>
+        <tr>
+            <td>SVM</td>
+            <td>0.894309</td>
+            <td>0.886665</td>
+            <td>0.894309</td>
+            <td>0.887438</td>
+        </tr>
+        <tr>
+            <td>Random Forest</td>
+            <td>0.902439</td>
+            <td>0.876961</td>
+            <td>0.902439</td>
+            <td>0.886146</td>
+        </tr>
+        <tr>
+            <td>Naive Bayes</td>
+            <td>0.829268</td>
+            <td>0.687686</td>
+            <td>0.829268</td>
+            <td>0.751870</td>
+        </tr>
+    </tbody>
+</table>
+
+Dari tabel diatas menghasilkan grafik berikut:
+(gambar)
+
+#### Kesimpulan
+Model yang digunakan untuk melakukan prediksi klasifikasi pada dataset HCV dengan tingkat akurasi paling tinggi menggunakan algoritma Random Forest dan KNN pada model yang telah dibangun.
+
