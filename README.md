@@ -30,7 +30,7 @@ Untuk mencapai tujuan tersebut, dalam proyek ini akan dibuat beberapa model yang
 - <p align="justify"> K-Nearest Neighbor (KNN) adalah algoritma yang sederhana dan efisien yang digunakan untuk mengklasifikasikan data baru berdasarkan kesamaan dengan data yang sudah ada. Algoritma ini bekerja dengan cara mencari titik data terdekat (tetangga) dalam dataset pelatihan dan mengklasifikasikan data baru berdasarkan mayoritas kelas dari tetangga tersebut <a href="https://www.geeksforgeeks.org/k-nearest-neighbours/">[2]</a>. </p>
 - <p align="justify"> Algoritma Support Vector Machine (SVM) digunakan untuk menemukan sebuah hyperplane dalam ruang N-dimensi (di mana N merupakan jumlah fitur) yang secara efektif mengklasifikasikan titik-titik data. SVM dapat digunakan untuk menyelesaikan masalah-masalah klasifikasi, regresi, serta deteksi outlier <a href="https://www.geeksforgeeks.org/support-vector-machine-algorithm/">[3]</a>. </p>
 - <p align="justify"> Random Forest adalah algoritma pembelajaran mesin yang kuat dan fleksibel, digunakan untuk berbagai tugas seperti klasifikasi dan regresi. Sebagai metode ensemble, Random Forest terdiri dari banyak pohon keputusan kecil, yang dikenal sebagai estimator, di mana masing-masing menghasilkan prediksi independen. Algoritma ini menggabungkan hasil dari semua estimator untuk menghasilkan prediksi yang lebih akurat <a href="https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/">[4]</a>. </p>
-- <p align="justify"> Naive Bayes adalah model pembelajaran mesin yang bersifat probabilistik dan digunakan untuk tugas klasifikasi. Inti dari pengklasifikasi ini didasarkan pada teorema Bayes, yang memungkinkan perhitungan probabilitas untuk mengklasifikasikan data. Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset bersifat independen satu sama lain, yang menyederhanakan proses klasifikasi <a href="https://www.geeksforgeeks.org/naive-bayes-classifiers//">[5]</a>. </p>
+- <p align="justify"> Naive Bayes adalah model pembelajaran mesin yang bersifat probabilistik dan digunakan untuk tugas klasifikasi. Inti dari pengklasifikasi ini didasarkan pada teorema Bayes, yang memungkinkan perhitungan probabilitas untuk mengklasifikasikan data. Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset bersifat independen satu sama lain, yang menyederhanakan proses klasifikasi <a href="https://www.geeksforgeeks.org/naive-bayes-classifiers/">[5]</a>. </p>
 
 ## Data Understanding
 Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform UCI Machine Learning Repository yang Diterbitkan dalam Journal of Laboratory and Precision Medicine. Dataset ini terdiri dari 1 file csv.
@@ -426,16 +426,16 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
 Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.
 1. Akurasi
    Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:
-   (gambar)
+   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png" style="zoom:50%;"><br>
 2. Precision
    Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:
-   (gambar)
+   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png" style="zoom:50%;"><br>
 3. Recall
    Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:
-  (gambar)
+   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png" style="zoom:50%;"><br>
 4. F1-Score
    F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:
-   (gambar)
+   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png" style="zoom:50%;"><br>
 
 #### Implementasi code
 <p align="justify">Metrik ini dihitung menggunakan classification_report dari library sklearn, yang menghasilkan laporan metrik dalam bentuk dictionary. Setiap metrik untuk masing-masing model kemudian disimpan dalam dictionary models_metrics, di mana akurasi dan nilai metrik lainnya diambil dari bagian "weighted avg" laporan, yang memperhitungkan distribusi kelas yang tidak seimbang. Terakhir, dictionary tersebut dikonversi menjadi DataFrame metrics_df untuk menampilkan hasil dengan format yang lebih terstruktur dan mudah dibaca.</p>
@@ -525,9 +525,23 @@ Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut
     </tbody>
 </table>
 
-Dari tabel diatas menghasilkan grafik berikut:
-(gambar)
+Dari tabel diatas menghasilkan grafik berikut:<br>
+<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/grafik.png" style="zoom:50%;"><br>
 
 #### Kesimpulan
 Model yang digunakan untuk melakukan prediksi klasifikasi pada dataset HCV dengan tingkat akurasi paling tinggi menggunakan algoritma Random Forest dan KNN pada model yang telah dibangun.
+
+## Referensi
+
+[1] Damayanti. Alfina, Testiana. Gusmelia, "PENERAPAN DATA MINING UNTUK PREDIKSIPENYAKIT HEPATITIS C MENGGUNAKANALGORITMANAÏVE BAYES", 2021, Retrieved from: https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732
+
+[2] geeksforgeeks.org, "K-Nearest Neighbor(KNN) Algorithm", Retrieved from: https://www.geeksforgeeks.org/k-nearest-neighbours/
+
+[3] geeksforgeeks.org, "Support Vector Machine (SVM) Algorithm", Retrieved from: https://www.geeksforgeeks.org/support-vector-machine-algorithm/
+
+[4] geeksforgeeks.org, "Random Forest Algorithm in Machine Learning", Retrieved from: https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/
+
+[5] geeksforgeeks.org, "Naive Bayes Classifiers", Retrieved from: https://www.geeksforgeeks.org/naive-bayes-classifiers/
+
+
 
