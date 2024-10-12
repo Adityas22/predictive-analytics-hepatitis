@@ -26,7 +26,7 @@ Tujuan dari proyek ini adalah:
 - Menemukan algoritma model machine learning dengan akurasi terbaik untuk memprediksi diagnosis virus hepatitis C (HCV) berdasarkan data demografi dan hasil laboratorium.
 
 #### Solution statements
-Untuk mencapai tujuan tersebut, dalam proyek ini akan dibuat beberapa model yang berbeda untuk dibandingkan, diantaranya adalah menggunakan:
+Untuk mencapai tujuan tersebut, beberapa langkah pemecahan masalah akan dilakukan, di antaranya:
 - Mempersiapkan dataset pasien.
 - Melakukan eksplorasi data untuk memahami pola dan hubungan antara variabel dalam dataset.
 - Membangun beberapa model machine learning (K-Nearest Neighbor, Support Vector Machine, Random Forest, dan Naive Bayes) untuk memprediksi diagnosis hepatitis C.
