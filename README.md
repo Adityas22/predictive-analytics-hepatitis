@@ -303,15 +303,6 @@ Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform U
   </tr>
 </table>
 
-## Data Preparation
-Teknik yang digunakan dalam persiapan data (Data Preparation) yaitu:
-
-1. Melakukan Label Encoding pada Category: Kolom Category berisi nilai-nilai kategori seperti "0=Blood Donor", "0s=suspect Blood Donor", "1=Hepatitis", "2=Fibrosis", dan "3=Cirrhosis". Agar dapat digunakan dalam model machine learning, kategori ini diubah menjadi angka menggunakan Label Encoding, misalnya: "0=Blood Donor" menjadi 0, "0s=suspect Blood Donor" menjadi 1, "1=Hepatitis" menjadi 2, dan seterusnya. Dengan demikian, model dapat mengolah variabel kategori dalam format numerik.
-2. Melakukan penghapusan kolom unnamed:0 : pada dataset ini berisi nomor urut baris yang dihasilkan secara otomatis saat dataset dibaca dari file. Kolom ini tidak memberikan informasi yang relevan untuk analisis data atau pembuatan model karena hanya berfungsi sebagai indeks baris
-3. Melakukan one-hot encoding pada sex :  Proses ini mengonversi kategori "m" dan "f" menjadi dua kolom baru, misalnya Sex_m dan Sex_f, dengan nilai 1 jika sesuai dengan kategori dan 0 jika tidak. Ini memungkinkan model untuk memproses kategori gender tanpa memberikan bobot numerik yang salah.
-4. mengatasi missing value dengan median : Median dipilih karena lebih tahan terhadap outlier dibandingkan rata-rata (mean), sehingga lebih tepat untuk menggantikan nilai yang hilang pada fitur numerik. Proses ini dilakukan dengan menghitung nilai tengah dari setiap kolom yang memiliki missing value, lalu mengganti nilai yang hilang dengan nilai median tersebut.
-   
-
 #### Berikut Visualisasi data dengan Boxplot:<br>
 <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/boxplot.png" style="zoom:50%;" /> <br>
 Interpretasi boxplot untuk data hepatitis C:
@@ -323,10 +314,6 @@ Interpretasi boxplot untuk data hepatitis C:
 - Boxplot CHE: Meskipun ada outlier, kadar cholinesterase tinggi mungkin tidak signifikan, tetap dipertimbangkan.
 - Boxplot GGT: Outlier mencolok dapat menunjukkan masalah hati, jadi data tidak dihapus.
 - Boxplot PROT: Outlier pada kadar protein total mungkin menunjukkan status gizi baik, tetap dipertimbangkan.
-
-
-#### Sehingga dilakukan proses pembersihan outliers dengan metode IQR (Inter Quartile Range) 
-Proses pembersihan outliers dilakukan menggunakan metode Interquartile Range (IQR). IQR dihitung dengan mencari selisih antara kuartil pertama (Q1) dan kuartil ketiga (Q3) dari kolom numerik. Outliers didefinisikan sebagai nilai yang berada di bawah Q1 minus 1.5 kali IQR atau di atas Q3 plus 1.5 kali IQR. Setelah menghitung IQR, semua data yang berada di luar batas tersebut dihapus dari dataset. Dengan metode ini, outliers yang dapat mempengaruhi performa model secara negatif akan dihilangkan, sehingga kualitas data yang digunakan untuk pelatihan model menjadi lebih baik.
 
 #### Univariate Analysis
 Melakukan proses analisis data univariate pada fitur-fitur numerik. Proses analisis ini menggunakan bantuan visualisasi histogram untuk masing-masing fitur numerik
@@ -350,7 +337,7 @@ Visualisasi dilakukan dengan bantuan library Seaborn menggunakan fungsi pairplot
 <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/multivariate.png" style="zoom:80%;" /> <br>
 
 #### Correlation Matrix with Heatmap
-Melakukan pengecekan korelasi antar fitur numerik dengan menggunakan visualisasi diagram heatmap correlation matrix.
+Melakukan pengecekan korelasi antar fitur numerik dengan menggunakan visualisasi diagram heatmap correlation matrix.<br>
 <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/korelasi.png" style="zoom:60%;" /> <br>
 Penjelasan beberapa poin penting dari matriks ini:
 - ALB dan PROT memiliki korelasi yang paling kuat (0.55), yang menunjukkan bahwa ada hubungan positif yang signifikan antara level Albumin (ALB) dan Protein (PROT).
@@ -358,26 +345,33 @@ Penjelasan beberapa poin penting dari matriks ini:
 - CHE dan CHOL juga memiliki korelasi yang cukup tinggi (0.42), yang bisa menunjukkan hubungan antara Cholinesterase (CHE) dan kolesterol (CHOL).
 - Di sisi lain, beberapa fitur menunjukkan korelasi yang rendah atau negatif, seperti BIL dan CHOL (-0.33), yang menunjukkan hubungan negatif antara Bilirubin (BIL) dan Kolesterol (CHOL).
 
-#### Melakukan Split Data
-   Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model.
-   Kemudian diperoleh hasil pembagian data masing-masing, yaitu sebagai berikut,
-   
+
+## Data Preparation
+Teknik yang digunakan dalam persiapan data (Data Preparation) yaitu:
+
+1. Melakukan Label Encoding pada Category: Kolom Category berisi nilai-nilai kategori seperti "0=Blood Donor", "0s=suspect Blood Donor", "1=Hepatitis", "2=Fibrosis", dan "3=Cirrhosis". Agar dapat digunakan dalam model machine learning, kategori ini diubah menjadi angka menggunakan Label Encoding, misalnya: "0=Blood Donor" menjadi 0, "0s=suspect Blood Donor" menjadi 1, "1=Hepatitis" menjadi 2, dan seterusnya. Dengan demikian, model dapat mengolah variabel kategori dalam format numerik.
+2. Melakukan penghapusan kolom unnamed:0 : pada dataset ini berisi nomor urut baris yang dihasilkan secara otomatis saat dataset dibaca dari file. Kolom ini tidak memberikan informasi yang relevan untuk analisis data atau pembuatan model karena hanya berfungsi sebagai indeks baris
+3. Melakukan one-hot encoding pada sex :  Proses ini mengonversi kategori "m" dan "f" menjadi dua kolom baru, misalnya Sex_m dan Sex_f, dengan nilai 1 jika sesuai dengan kategori dan 0 jika tidak. Ini memungkinkan model untuk memproses kategori gender tanpa memberikan bobot numerik yang salah.
+4. mengatasi missing value dengan median : Median dipilih karena lebih tahan terhadap outlier dibandingkan rata-rata (mean), sehingga lebih tepat untuk menggantikan nilai yang hilang pada fitur numerik. Proses ini dilakukan dengan menghitung nilai tengah dari setiap kolom yang memiliki missing value, lalu mengganti nilai yang hilang dengan nilai median tersebut.
+5. Melakukan Split Data : Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model. Kemudian diperoleh hasil pembagian data masing-masing, yaitu sebagai berikut,
+   ```
     Total # of samples in the whole dataset: 615
     Total # of samples in train dataset: 492
     Total # of samples in test dataset: 123
-    
-
-#### Melakukan Normalisasi
-   Pada proyek ini menggunakan MinMaxScaler, yaitu teknik normalisasi yang mentransformasikan nilai fitur atau variabel ke dalam rentang [0,1] yang berarti bahwa nilai minimum dan maksimum dari fitur/variabel masing-masing adalah 0 dan 1
+   ```
+   
+7.  Melakukan Normalisasi : Pada proyek ini menggunakan MinMaxScaler, yaitu teknik normalisasi yang mentransformasikan nilai fitur atau variabel ke dalam rentang [0,1] yang berarti bahwa nilai minimum dan maksimum dari fitur/variabel masing-masing adalah 0 dan 1
 
 ## Modeling
 <p align="justify">Pada tahap modeling ini, dibuat beberapa model dengan algoritma yang berbeda-beda. Pada proyek ini, akan dibuat 4 model, di antaranya yaitu menggunakan KNN, SVM, Random Forest, dan Naive Bayes, yang masing-masing akan dilatih menggunakan data yang sama dan dievaluasi berdasarkan akurasi untuk membandingkan kinerja mereka.</p>
    
 1. K-Nearest Neighbor (KNN)
    <p align="justify"> K-Nearest Neighbor (KNN) adalah algoritma yang sederhana dan efisien yang digunakan untuk mengklasifikasikan data baru berdasarkan kesamaan dengan data yang sudah ada. Algoritma ini bekerja dengan cara mencari titik data terdekat (tetangga) dalam dataset pelatihan dan mengklasifikasikan data baru berdasarkan mayoritas kelas dari tetangga tersebut <a href="https://www.geeksforgeeks.org/k-nearest-neighbours/">[2]</a>. </p>
+   
+-  Konfigurasi model KNN:
+    - Jumlah tetangga: 3 (nilai default dapat diganti)
 
 -  Berikut adalah tahapan implementasi yang:
-    
     - Algoritma ini bekerja dengan mencari beberapa tetangga terdekat dari data yang ingin diklasifikasikan.
     - Model KNN dilatih menggunakan 3 tetangga terdekat dan kemudian diuji pada data uji.
     - Akurasi dihitung berdasarkan hasil prediksi terhadap data uji.
@@ -390,6 +384,9 @@ Penjelasan beberapa poin penting dari matriks ini:
       
 2. Support Vector Machine (SVM)
    <p align="justify"> Algoritma Support Vector Machine (SVM) digunakan untuk menemukan sebuah hyperplane dalam ruang N-dimensi (di mana N merupakan jumlah fitur) yang secara efektif mengklasifikasikan titik-titik data. SVM dapat digunakan untuk menyelesaikan masalah-masalah klasifikasi, regresi, serta deteksi outlier <a href="https://www.geeksforgeeks.org/support-vector-machine-algorithm/">[3]</a>. </p>
+
+-  Konfigurasi model SVM:
+    - Kernel: Linear (menggunakan kernel linear untuk klasifikasi)
 
 -  Berikut adalah tahapan implementasi yang:
     
@@ -406,6 +403,9 @@ Penjelasan beberapa poin penting dari matriks ini:
 3. Random Forest
    <p align="justify"> Random Forest adalah algoritma pembelajaran mesin yang kuat dan fleksibel, digunakan untuk berbagai tugas seperti klasifikasi dan regresi. Sebagai metode ensemble, Random Forest terdiri dari banyak pohon keputusan kecil, yang dikenal sebagai estimator, di mana masing-masing menghasilkan prediksi independen. Algoritma ini menggabungkan hasil dari semua estimator untuk menghasilkan prediksi yang lebih akurat <a href="https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/">[4]</a>. </p>
 
+-  Konfigurasi model SVM:
+    - Jumlah estimators: Default (100 pohon keputusan)
+
 -  Berikut adalah tahapan implementasi yang:
     
     - Algoritma ini membangun beberapa pohon keputusan dan menggabungkan hasilnya untuk meningkatkan akurasi.
@@ -419,6 +419,9 @@ Penjelasan beberapa poin penting dari matriks ini:
       
 4. Naive Bayes
    <p align="justify"> Naive Bayes adalah model pembelajaran mesin yang bersifat probabilistik dan digunakan untuk tugas klasifikasi. Inti dari pengklasifikasi ini didasarkan pada teorema Bayes, yang memungkinkan perhitungan probabilitas untuk mengklasifikasikan data. Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset bersifat independen satu sama lain, yang menyederhanakan proses klasifikasi <a href="https://www.geeksforgeeks.org/naive-bayes-classifiers/">[5]</a>. </p>
+
+-  Konfigurasi model SVM:
+    - Jenis: Bernoulli Naive Bayes (digunakan karena dataset berbasis biner)
 
 -  Berikut adalah tahapan implementasi yang:
     
@@ -436,15 +439,22 @@ Penjelasan beberapa poin penting dari matriks ini:
 Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.
 1. Akurasi
    Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:<br>
+   
    <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png" style="zoom:50%;">
+   
 2. Precision
    Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:<br>
+   
    <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png" style="zoom:50%;">
+   
 3. Recall
    Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:<br>
+   
    <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png" style="zoom:50%;">
+   
 4. F1-Score
    F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:<br>
+   
    <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png" style="zoom:50%;">
    
 #### Visualization
