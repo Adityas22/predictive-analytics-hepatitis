@@ -10,27 +10,28 @@ Domain yang dipilih untuk proyek machine learning ini adalah sosial, dengan judu
 </p>
 <br>
 <p align="justify">
-Hepatitis C adalah penyakit infeksi yang menyerang hati akibat virus hepatitis C (HCV) dan dapat berkembang menjadi kondisi serius seperti fibrosis, sirosis, serta kanker hati jika tidak dideteksi dan diobati dengan baik. Penyakit ini sering kali tidak menunjukkan gejala pada tahap awal, sehingga banyak penderita tidak menyadari bahwa mereka terinfeksi hingga terjadi kerusakan hati yang signifikan. Berdasarkan laporan global dari Organisasi Kesehatan Dunia (WHO), diperkirakan 58 juta orang di seluruh dunia menderita infeksi hepatitis C kronis, dengan sekitar 1,5 juta infeksi baru setiap tahunnya. Selain itu, terdapat sekitar 3,2 juta remaja dan anak-anak yang juga terinfeksi hepatitis C kronis. Pada tahun 2019, WHO mencatat bahwa sekitar 290.000 orang meninggal akibat komplikasi hepatitis C, terutama karena sirosis dan kanker hati primer (karsinoma hepatoseluler) <a href="https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732">[1]</a>. Tes diagnostik untuk mengidentifikasi orang dengan Hepatitis C dan tahap perkembangan penyakitnya (seperti fibrosis dan sirosis) bisa sangat membantu. Dengan pendekatan ini, deteksi dan identifikasi yang lebih akurat dapat dilakukan untuk memantau kondisi pasien dan memberikan informasi yang lebih tepat mengenai status penyakit.
+Hepatitis C adalah penyakit infeksi yang menyerang hati akibat virus hepatitis C (HCV) dan dapat berkembang menjadi kondisi serius seperti fibrosis, sirosis, serta kanker hati jika tidak dideteksi dan diobati dengan baik. Penyakit ini sering kali tidak menunjukkan gejala pada tahap awal, sehingga banyak penderita tidak menyadari bahwa mereka terinfeksi hingga terjadi kerusakan hati yang signifikan. Berdasarkan laporan global dari Organisasi Kesehatan Dunia (WHO), diperkirakan 58 juta orang di seluruh dunia menderita infeksi hepatitis C kronis, dengan sekitar 1,5 juta infeksi baru setiap tahunnya. Selain itu, terdapat sekitar 3,2 juta remaja dan anak-anak yang juga terinfeksi hepatitis C kronis. Pada tahun 2019, WHO mencatat bahwa sekitar 290.000 orang meninggal akibat komplikasi hepatitis C, terutama karena sirosis dan kanker hati primer (karsinoma hepatoseluler) <a href="https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732">[1]</a>. Dengan memanfaatkan machine learning seperti K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Random Forest, dan Naive Bayes dapat membangun sistem pendukung keputusan untuk mengklasifikasikan pasien berdasarkan hasil laboratorium. Model ini akan membantu dokter dalam mendeteksi kondisi hati berdasarkan pola yang ada di data laboratorium, memberikan hasil yang lebih akurat dan efisien dalam menentukan status kesehatan pasien.
 </p>
 
 ## Business Understanding
 
 #### Problem Statements
 Berdasarkan latar belakang di atas, berikut ini merupakan rincian masalah yang dapat diselesaikan pada proyek ini:
-- Bagaimana membuat model machine learning yang dapat memprediksi atau mendiagnosis virus hepatitis C (HCV) pada pasien berdasarkan data demografi dan hasil laboratorium?
-- Model yang seperti apa yang memiliki akurasi paling baik untuk diagnosis tersebut?
+- Bagaimana mendapatkan model machine learning yang dapat memprediksi atau mendiagnosis virus hepatitis C (HCV) pada pasien berdasarkan data demografi dan hasil laboratorium?
+- Algoritma model machine learning mana yang memiliki akurasi paling baik untuk diagnosis tersebut?
 
 #### Goals
 Tujuan dari proyek ini adalah:
-- Membuat model machine learning yang dapat memprediksikan pasien apakah terdiagnosis virus hepatitis C (HCV) atau tidak, berdasarkan data demografi dan hasil laboratorium.
-- Membandingkan beberapa algoritma model sehingga ditemukan akurasi yang paling baik untuk memprediksikan diagnosis virus hepatitis C (HCV) berdasarkan data demografi dan hasil laboratorium.
+- Mendapatkan model machine learning yang mampu memprediksi apakah pasien terdiagnosis virus hepatitis C (HCV) atau tidak, berdasarkan data demografi dan hasil laboratorium.
+- Menemukan algoritma model machine learning dengan akurasi terbaik untuk memprediksi diagnosis virus hepatitis C (HCV) berdasarkan data demografi dan hasil laboratorium.
 
 #### Solution statements
 Untuk mencapai tujuan tersebut, dalam proyek ini akan dibuat beberapa model yang berbeda untuk dibandingkan, diantaranya adalah menggunakan:
-- <p align="justify"> K-Nearest Neighbor (KNN) adalah algoritma yang sederhana dan efisien yang digunakan untuk mengklasifikasikan data baru berdasarkan kesamaan dengan data yang sudah ada. Algoritma ini bekerja dengan cara mencari titik data terdekat (tetangga) dalam dataset pelatihan dan mengklasifikasikan data baru berdasarkan mayoritas kelas dari tetangga tersebut <a href="https://www.geeksforgeeks.org/k-nearest-neighbours/">[2]</a>. </p>
-- <p align="justify"> Algoritma Support Vector Machine (SVM) digunakan untuk menemukan sebuah hyperplane dalam ruang N-dimensi (di mana N merupakan jumlah fitur) yang secara efektif mengklasifikasikan titik-titik data. SVM dapat digunakan untuk menyelesaikan masalah-masalah klasifikasi, regresi, serta deteksi outlier <a href="https://www.geeksforgeeks.org/support-vector-machine-algorithm/">[3]</a>. </p>
-- <p align="justify"> Random Forest adalah algoritma pembelajaran mesin yang kuat dan fleksibel, digunakan untuk berbagai tugas seperti klasifikasi dan regresi. Sebagai metode ensemble, Random Forest terdiri dari banyak pohon keputusan kecil, yang dikenal sebagai estimator, di mana masing-masing menghasilkan prediksi independen. Algoritma ini menggabungkan hasil dari semua estimator untuk menghasilkan prediksi yang lebih akurat <a href="https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/">[4]</a>. </p>
-- <p align="justify"> Naive Bayes adalah model pembelajaran mesin yang bersifat probabilistik dan digunakan untuk tugas klasifikasi. Inti dari pengklasifikasi ini didasarkan pada teorema Bayes, yang memungkinkan perhitungan probabilitas untuk mengklasifikasikan data. Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset bersifat independen satu sama lain, yang menyederhanakan proses klasifikasi <a href="https://www.geeksforgeeks.org/naive-bayes-classifiers/">[5]</a>. </p>
+- Mempersiapkan dataset pasien.
+- Melakukan eksplorasi data untuk memahami pola dan hubungan antara variabel dalam dataset.
+- Membangun beberapa model machine learning (K-Nearest Neighbor, Support Vector Machine, Random Forest, dan Naive Bayes) untuk memprediksi diagnosis hepatitis C.
+- Melakukan evaluasi dan perbandingan performa model menggunakan metrik akurasi, presisi, recall, dan F1-score.
+- Memilih model terbaik berdasarkan hasil evaluasi untuk digunakan dalam mendukung diagnosis hepatitis C yang lebih akurat.
 
 ## Data Understanding
 Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform UCI Machine Learning Repository yang Diterbitkan dalam Journal of Laboratory and Precision Medicine. Dataset ini terdiri dari 1 file csv.
@@ -55,151 +56,220 @@ Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform U
 13. **GGT** (Gamma-Glutamyl Transferase): Enzim yang meningkat pada penyakit hati, terutama pada penyalahgunaan alkohol atau kerusakan saluran empedu.
 14. **PROT** (Total Protein): Jumlah total protein dalam darah, termasuk albumin dan globulin, yang berfungsi sebagai indikator status nutrisi dan fungsi hati.
 
-<p align="justify"> Dataset yang digunakan dalam proyek ini terdiri dari 615 sampel pasien dengan 14 kolom. Terdapat nilai yang hilang (missing values) pada beberapa kolom, yaitu: ALB (1), ALP (18), ALT (1), CHOL (10), dan PROT (1). Untuk mengatasi nilai yang hilang, akan digunakan metode median.</p> 
+<p align="justify"> Dataset yang digunakan dalam proyek ini terdiri dari 615 sampel pasien dengan 14 kolom. Terdapat nilai yang hilang (missing values) pada beberapa kolom, yaitu: ALB (1), ALP (18), ALT (1), CHOL (10), dan PROT (1) kemudian untuk duplikat tidak ada. Untuk mengatasi nilai yang hilang, akan digunakan metode median.</p> 
 
-  ```python
-  columns_with_nan = df.columns[df.isnull().any()]  
+<table>
+    <thead>
+        <tr>
+            <th>Kolom</th>
+            <th>Missing Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Unnamed</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Sex</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>ALB</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>ALP</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>ALT</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>AST</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>BIL</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>CHE</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>CHOL</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>CREA</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>GGT</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>PROT</td>
+            <td>1</td>
+        </tr>
+    </tbody>
+</table>
 
-  for column in columns_with_nan:
-    df[column].fillna(df[column].median(), inplace=True)
-  ```
 
 
 #### Berikut rangkuman statistik deskriptif dari fitur dalam dataset:
 <table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Age</th>
-      <th>ALB</th>
-      <th>ALP</th>
-      <th>ALT</th>
-      <th>AST</th>
-      <th>BIL</th>
-      <th>CHE</th>
-      <th>CHOL</th>
-      <th>CREA</th>
-      <th>GGT</th>
-      <th>PROT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>count</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-      <td>615.000000</td>
-    </tr>
-    <tr>
-      <td>mean</td>
-      <td>47.408130</td>
-      <td>41.620732</td>
-      <td>68.222927</td>
-      <td>28.441951</td>
-      <td>34.786341</td>
-      <td>11.396748</td>
-      <td>8.196634</td>
-      <td>5.366992</td>
-      <td>81.287805</td>
-      <td>39.533171</td>
-      <td>72.044390</td>
-    </tr>
-    <tr>
-      <td>std</td>
-      <td>10.055105</td>
-      <td>5.775935</td>
-      <td>25.646364</td>
-      <td>25.449889</td>
-      <td>33.090690</td>
-      <td>19.673150</td>
-      <td>2.205657</td>
-      <td>1.123499</td>
-      <td>49.756166</td>
-      <td>54.661071</td>
-      <td>5.398238</td>
-    </tr>
-    <tr>
-      <td>min</td>
-      <td>19.000000</td>
-      <td>14.900000</td>
-      <td>11.300000</td>
-      <td>0.900000</td>
-      <td>10.600000</td>
-      <td>0.800000</td>
-      <td>1.420000</td>
-      <td>1.430000</td>
-      <td>8.000000</td>
-      <td>4.500000</td>
-      <td>44.800000</td>
-    </tr>
-    <tr>
-      <td>25%</td>
-      <td>39.000000</td>
-      <td>38.800000</td>
-      <td>52.950000</td>
-      <td>16.400000</td>
-      <td>21.600000</td>
-      <td>5.300000</td>
-      <td>6.935000</td>
-      <td>4.620000</td>
-      <td>67.000000</td>
-      <td>15.700000</td>
-      <td>69.300000</td>
-    </tr>
-    <tr>
-      <td>50%</td>
-      <td>47.000000</td>
-      <td>41.950000</td>
-      <td>66.200000</td>
-      <td>23.000000</td>
-      <td>25.900000</td>
-      <td>7.300000</td>
-      <td>8.260000</td>
-      <td>5.300000</td>
-      <td>77.000000</td>
-      <td>23.300000</td>
-      <td>72.200000</td>
-    </tr>
-    <tr>
-      <td>75%</td>
-      <td>54.000000</td>
-      <td>45.200000</td>
-      <td>79.300000</td>
-      <td>33.050000</td>
-      <td>32.900000</td>
-      <td>11.200000</td>
-      <td>9.590000</td>
-      <td>6.055000</td>
-      <td>88.000000</td>
-      <td>40.200000</td>
-      <td>75.400000</td>
-    </tr>
-    <tr>
-      <td>max</td>
-      <td>77.000000</td>
-      <td>82.200000</td>
-      <td>416.600000</td>
-      <td>325.300000</td>
-      <td>324.000000</td>
-      <td>254.000000</td>
-      <td>16.410000</td>
-      <td>9.670000</td>
-      <td>1079.100000</td>
-      <td>650.900000</td>
-      <td>90.000000</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th> </th>
+            <th>Unnamed</th>
+            <th>Age</th>
+            <th>ALB</th>
+            <th>ALP</th>
+            <th>ALT</th>
+            <th>AST</th>
+            <th>BIL</th>
+            <th>CHE</th>
+            <th>CHOL</th>
+            <th>CREA</th>
+            <th>GGT</th>
+            <th>PROT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>count</td>
+            <td>615.000000</td>
+            <td>615.000000</td>
+            <td>614.000000</td>
+            <td>597.000000</td>
+            <td>614.000000</td>
+            <td>615.000000</td>
+            <td>615.000000</td>
+            <td>615.000000</td>
+            <td>605.000000</td>
+            <td>615.000000</td>
+            <td>615.000000</td>
+            <td>614.000000</td>
+        </tr>
+        <tr>
+            <td>mean</td>
+            <td>308.000000</td>
+            <td>47.408130</td>
+            <td>41.620195</td>
+            <td>68.283920</td>
+            <td>28.450814</td>
+            <td>34.786341</td>
+            <td>11.396748</td>
+            <td>8.196634</td>
+            <td>5.368099</td>
+            <td>81.287805</td>
+            <td>39.533171</td>
+            <td>72.044137</td>
+        </tr>
+        <tr>
+            <td>std</td>
+            <td>177.679487</td>
+            <td>10.055105</td>
+            <td>5.780629</td>
+            <td>26.028315</td>
+            <td>25.469689</td>
+            <td>33.090690</td>
+            <td>19.673150</td>
+            <td>2.205657</td>
+            <td>1.132728</td>
+            <td>49.756166</td>
+            <td>54.661071</td>
+            <td>5.402636</td>
+        </tr>
+        <tr>
+            <td>min</td>
+            <td>1.000000</td>
+            <td>19.000000</td>
+            <td>14.900000</td>
+            <td>11.300000</td>
+            <td>0.900000</td>
+            <td>10.600000</td>
+            <td>0.800000</td>
+            <td>1.420000</td>
+            <td>1.430000</td>
+            <td>8.000000</td>
+            <td>4.500000</td>
+            <td>44.800000</td>
+        </tr>
+        <tr>
+            <td>25%</td>
+            <td>154.500000</td>
+            <td>39.000000</td>
+            <td>38.800000</td>
+            <td>52.500000</td>
+            <td>16.400000</td>
+            <td>21.600000</td>
+            <td>5.300000</td>
+            <td>6.935000</td>
+            <td>4.610000</td>
+            <td>67.000000</td>
+            <td>15.700000</td>
+            <td>69.300000</td>
+        </tr>
+        <tr>
+            <td>50%</td>
+            <td>308.000000</td>
+            <td>47.000000</td>
+            <td>41.950000</td>
+            <td>66.200000</td>
+            <td>23.000000</td>
+            <td>25.900000</td>
+            <td>7.300000</td>
+            <td>8.260000</td>
+            <td>5.300000</td>
+            <td>77.000000</td>
+            <td>23.300000</td>
+            <td>72.200000</td>
+        </tr>
+        <tr>
+            <td>75%</td>
+            <td>461.500000</td>
+            <td>54.000000</td>
+            <td>45.200000</td>
+            <td>80.100000</td>
+            <td>33.075000</td>
+            <td>32.900000</td>
+            <td>11.200000</td>
+            <td>9.590000</td>
+            <td>6.060000</td>
+            <td>88.000000</td>
+            <td>40.200000</td>
+            <td>75.400000</td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>615.000000</td>
+            <td>77.000000</td>
+            <td>82.200000</td>
+            <td>416.600000</td>
+            <td>325.300000</td>
+            <td>324.000000</td>
+            <td>254.000000</td>
+            <td>16.410000</td>
+            <td>9.670000</td>
+            <td>1079.100000</td>
+            <td>650.900000</td>
+            <td>90.000000</td>
+        </tr>
+    </tbody>
 </table>
 
-     gambar
 #### Informasi Dataset:
 
 <table>
@@ -233,6 +303,15 @@ Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform U
   </tr>
 </table>
 
+## Data Preparation
+Teknik yang digunakan dalam persiapan data (Data Preparation) yaitu:
+
+1. Melakukan Label Encoding pada Category: Kolom Category berisi nilai-nilai kategori seperti "0=Blood Donor", "0s=suspect Blood Donor", "1=Hepatitis", "2=Fibrosis", dan "3=Cirrhosis". Agar dapat digunakan dalam model machine learning, kategori ini diubah menjadi angka menggunakan Label Encoding, misalnya: "0=Blood Donor" menjadi 0, "0s=suspect Blood Donor" menjadi 1, "1=Hepatitis" menjadi 2, dan seterusnya. Dengan demikian, model dapat mengolah variabel kategori dalam format numerik.
+2. Melakukan penghapusan kolom unnamed:0 : pada dataset ini berisi nomor urut baris yang dihasilkan secara otomatis saat dataset dibaca dari file. Kolom ini tidak memberikan informasi yang relevan untuk analisis data atau pembuatan model karena hanya berfungsi sebagai indeks baris
+3. Melakukan one-hot encoding pada sex :  Proses ini mengonversi kategori "m" dan "f" menjadi dua kolom baru, misalnya Sex_m dan Sex_f, dengan nilai 1 jika sesuai dengan kategori dan 0 jika tidak. Ini memungkinkan model untuk memproses kategori gender tanpa memberikan bobot numerik yang salah.
+4. mengatasi missing value dengan median : Median dipilih karena lebih tahan terhadap outlier dibandingkan rata-rata (mean), sehingga lebih tepat untuk menggantikan nilai yang hilang pada fitur numerik. Proses ini dilakukan dengan menghitung nilai tengah dari setiap kolom yang memiliki missing value, lalu mengganti nilai yang hilang dengan nilai median tersebut.
+   
+
 #### Berikut Visualisasi data dengan Boxplot:<br>
 <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/boxplot.png" style="zoom:50%;" /> <br>
 Interpretasi boxplot untuk data hepatitis C:
@@ -246,23 +325,8 @@ Interpretasi boxplot untuk data hepatitis C:
 - Boxplot PROT: Outlier pada kadar protein total mungkin menunjukkan status gizi baik, tetap dipertimbangkan.
 
 
-Sehingga dilakukan proses pembersihan outliers dengan metode IQR (Inter Quartile Range).
-
-  ```python
-# Hitung Q1 dan Q3 untuk semua kolom numerik
-Q1 = df.select_dtypes(include=['float64', 'int64']).quantile(0.25)
-Q3 = df.select_dtypes(include=['float64', 'int64']).quantile(0.75)
-
-# Hitung IQR (Interquartile Range)
-IQR = Q3 - Q1
-
-# Hapus outlier dari dataset berdasarkan aturan IQR
-df_clean = df[~((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | 
-                (df.select_dtypes(include=['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)]
-
-# Cek ukuran dataset setelah outlier dihapus
-print(f"Ukuran dataset setelah outlier dihapus: {df_clean.shape}")
-  ```
+#### Sehingga dilakukan proses pembersihan outliers dengan metode IQR (Inter Quartile Range) 
+Proses pembersihan outliers dilakukan menggunakan metode Interquartile Range (IQR). IQR dihitung dengan mencari selisih antara kuartil pertama (Q1) dan kuartil ketiga (Q3) dari kolom numerik. Outliers didefinisikan sebagai nilai yang berada di bawah Q1 minus 1.5 kali IQR atau di atas Q3 plus 1.5 kali IQR. Setelah menghitung IQR, semua data yang berada di luar batas tersebut dihapus dari dataset. Dengan metode ini, outliers yang dapat mempengaruhi performa model secara negatif akan dihilangkan, sehingga kualitas data yang digunakan untuk pelatihan model menjadi lebih baik.
 
 #### Univariate Analysis
 Melakukan proses analisis data univariate pada fitur-fitur numerik. Proses analisis ini menggunakan bantuan visualisasi histogram untuk masing-masing fitur numerik
@@ -294,63 +358,29 @@ Penjelasan beberapa poin penting dari matriks ini:
 - CHE dan CHOL juga memiliki korelasi yang cukup tinggi (0.42), yang bisa menunjukkan hubungan antara Cholinesterase (CHE) dan kolesterol (CHOL).
 - Di sisi lain, beberapa fitur menunjukkan korelasi yang rendah atau negatif, seperti BIL dan CHOL (-0.33), yang menunjukkan hubungan negatif antara Bilirubin (BIL) dan Kolesterol (CHOL).
 
-## Data Preparation
-Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
-1. **Split Data**  
+#### Melakukan Split Data
    Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model.
-   
-    ```python
-    from sklearn.model_selection import train_test_split
-    X = df.drop(["Category"], axis=1)  # Drop kolom target
-    y = df["Category"]  # Kolom target
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
-    ```
-    
    Kemudian diperoleh hasil pembagian data masing-masing, yaitu sebagai berikut,
    
-    ```python
     Total # of samples in the whole dataset: 615
     Total # of samples in train dataset: 492
     Total # of samples in test dataset: 123
-    ```
+    
 
-2. **Normalisasi**
+#### Melakukan Normalisasi
    Pada proyek ini menggunakan MinMaxScaler, yaitu teknik normalisasi yang mentransformasikan nilai fitur atau variabel ke dalam rentang [0,1] yang berarti bahwa nilai minimum dan maksimum dari fitur/variabel masing-masing adalah 0 dan 1
-   
-    ```python
-    from sklearn.preprocessing import MinMaxScaler
-
-    scaler = MinMaxScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
-    ```
 
 ## Modeling
 <p align="justify">Pada tahap modeling ini, dibuat beberapa model dengan algoritma yang berbeda-beda. Pada proyek ini, akan dibuat 4 model, di antaranya yaitu menggunakan KNN, SVM, Random Forest, dan Naive Bayes, yang masing-masing akan dilatih menggunakan data yang sama dan dievaluasi berdasarkan akurasi untuk membandingkan kinerja mereka.</p>
-
-    ```python  
-    from sklearn.neighbors import KNeighborsClassifier  
-    from sklearn.ensemble import RandomForestClassifier  
-    from sklearn.svm import SVC  
-    from sklearn.naive_bayes import GaussianNB  
-    from sklearn.metrics import accuracy_score 
-    models = pd.DataFrame(index=['accuracy_score'], 
-                      columns=['KNN', 'RandomForest', 'SVM', 'Naive Bayes'])
-    ```
-    
+   
 1. K-Nearest Neighbor (KNN)
-   <p align="justify">Algoritma K-Nearest Neighbors (KNN) untuk membangun model prediksi. Model dilatih pada data training (X_train, y_train) dengan 3 tetangga terdekat (n_neighbors=3). Setelah itu, dilakukan prediksi pada data testing (X_test) menggunakan model yang telah dilatih, dan hasil prediksi disimpan dalam variabel knn_pred. Akurasi model dihitung menggunakan accuracy_score dengan membandingkan prediksi terhadap nilai sebenarnya (y_test), lalu hasilnya disimpan ke dalam tabel models pada kolom KNN </p>
+   <p align="justify"> K-Nearest Neighbor (KNN) adalah algoritma yang sederhana dan efisien yang digunakan untuk mengklasifikasikan data baru berdasarkan kesamaan dengan data yang sudah ada. Algoritma ini bekerja dengan cara mencari titik data terdekat (tetangga) dalam dataset pelatihan dan mengklasifikasikan data baru berdasarkan mayoritas kelas dari tetangga tersebut <a href="https://www.geeksforgeeks.org/k-nearest-neighbours/">[2]</a>. </p>
 
-   ```python  
-    # Buat model prediksi dengan KNN
-    model_knn = KNeighborsClassifier(n_neighbors=3)
-    model_knn.fit(X_train, y_train)
-    # Lakukan prediksi dengan model KNN
-    knn_pred = model_knn.predict(X_test)
-
-    # Hitung metriks akurasi dan simpan hasilnya
-    models.loc['accuracy_score','KNN'] = accuracy_score(y_test, knn_pred)
-    ```
+-  Berikut adalah tahapan implementasi yang:
+    
+    - Algoritma ini bekerja dengan mencari beberapa tetangga terdekat dari data yang ingin diklasifikasikan.
+    - Model KNN dilatih menggunakan 3 tetangga terdekat dan kemudian diuji pada data uji.
+    - Akurasi dihitung berdasarkan hasil prediksi terhadap data uji.
 
 -  KNN memiliki kelebihan dan kekurangannya adalah sebagai berikut:
     
@@ -359,20 +389,13 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
     - Kekurangan: Di sisi lain, salah satu kelemahan KNN adalah efisiensi waktu komputasi. Proses pencarian tetangga terdekat dapat menjadi sangat lambat, terutama pada dataset yang besar. Kelemahan lainnya adalah risiko overfitting, yang dapat terjadi jika dataset yang digunakan relatif kecil, sehingga menghasilkan pola yang tidak umum pada data uji.
       
 2. Support Vector Machine (SVM)
-   <p align="justify">Algoritma Support Vector Machine (SVM) dengan kernel linear untuk membangun model prediksi. Model SVM dibuat dengan memilih kernel linear (kernel='linear'), namun bisa juga diganti dengan kernel lain seperti 'rbf' atau 'poly' sesuai kebutuhan. Model kemudian dilatih menggunakan data training (X_train, y_train). Setelah model terlatih, dilakukan prediksi pada data testing (X_test) dan hasil prediksi disimpan dalam variabel svm_pred. Akurasi model dihitung menggunakan accuracy_score dengan membandingkan hasil prediksi terhadap nilai sebenarnya (y_test), dan disimpan dalam tabel models pada kolom SVM. </p>
+   <p align="justify"> Algoritma Support Vector Machine (SVM) digunakan untuk menemukan sebuah hyperplane dalam ruang N-dimensi (di mana N merupakan jumlah fitur) yang secara efektif mengklasifikasikan titik-titik data. SVM dapat digunakan untuk menyelesaikan masalah-masalah klasifikasi, regresi, serta deteksi outlier <a href="https://www.geeksforgeeks.org/support-vector-machine-algorithm/">[3]</a>. </p>
 
-   ```python  
-    # Membuat model SVM dengan kernel linear
-    model_svm = SVC(kernel='linear')  # Anda bisa mengganti 'linear' dengan 'rbf', 'poly', dsb.
-
-    # Latih model SVM dengan data pelatihan
-    model_svm.fit(X_train, y_train)
-    # Lakukan prediksi dengan model SVM
-    svm_pred = model_svm.predict(X_test)
-
-    # Hitung metriks akurasi dan simpan hasilnya
-    models.loc['accuracy_score', 'SVM'] = accuracy_score(y_test, svm_pred)
-    ```
+-  Berikut adalah tahapan implementasi yang:
+    
+    - Algoritma SVM mencari hyperplane yang memisahkan data ke dalam kelas-kelas berbeda.
+    - Model SVM ini dikonfigurasi menggunakan kernel linear dan dilatih pada data pelatihan, kemudian diuji pada data uji.
+    - Akurasi diukur setelah prediksi dilakukan.
 
 -  SVM memiliki kelebihan dan kekurangannya adalah sebagai berikut:
     
@@ -380,19 +403,13 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
     
     - Kekurangan: SVM juga memiliki kelemahan. Salah satunya adalah waktu pelatihan yang tinggi, terutama ketika dihadapkan pada dataset besar, yang dapat membuatnya tidak efisien dalam beberapa situasi. Selain itu, kompleksitas implementasi SVM dapat menjadi tantangan, karena pemilihan kernel yang tepat dan pengaturan hyperparameter yang sesuai sangat penting untuk mencapai performa optimal.
       
-3. Random Forest(SVM)
-   <p align="justify">Algoritma Random Forest dengan model RandomForestClassifier() dibuat dan dilatih menggunakan data training (X_train, y_train). Setelah model dilatih, dilakukan prediksi terhadap data testing (X_test), dengan hasil prediksi disimpan dalam variabel rf_pred. Akurasi model dihitung menggunakan fungsi accuracy_score dengan membandingkan prediksi terhadap nilai asli (y_test), dan hasilnya disimpan ke dalam tabel models pada kolom RandomForest. </p>
+3. Random Forest
+   <p align="justify"> Random Forest adalah algoritma pembelajaran mesin yang kuat dan fleksibel, digunakan untuk berbagai tugas seperti klasifikasi dan regresi. Sebagai metode ensemble, Random Forest terdiri dari banyak pohon keputusan kecil, yang dikenal sebagai estimator, di mana masing-masing menghasilkan prediksi independen. Algoritma ini menggabungkan hasil dari semua estimator untuk menghasilkan prediksi yang lebih akurat <a href="https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/">[4]</a>. </p>
 
-   ```python  
-    # Buat model prediksi dengan Random Forest
-    model_rf = RandomForestClassifier()
-    model_rf.fit(X_train, y_train)
-    # Lakukan prediksi dengan model Random Forest
-    rf_pred = model_rf.predict(X_test)
-
-    # Hitung metriks akurasi dan simpan hasilnya
-    models.loc['accuracy_score','RandomForest'] = accuracy_score(y_test, rf_pred)
-    ```
+-  Berikut adalah tahapan implementasi yang:
+    
+    - Algoritma ini membangun beberapa pohon keputusan dan menggabungkan hasilnya untuk meningkatkan akurasi.
+    - Model dilatih menggunakan seluruh data pelatihan dan diuji pada data uji, dengan hasil akurasi disimpan untuk evaluasi.
 
 -  Random Forest memiliki kelebihan dan kekurangannya adalah sebagai berikut:
     
@@ -401,21 +418,14 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
     - Kekurangan: interpretabilitas yang terbatas dan kebutuhan untuk mengatur beberapa parameter. Interpretabilitas menjadi tantangan karena banyaknya pohon keputusan yang terlibat, membuat sulit untuk memahami kontribusi setiap fitur. Selain itu, pengaturan parameter yang optimal memerlukan eksperimen yang cermat, yang bisa menjadi rumit tanpa pengetahuan awal tentang dataset.
       
 4. Naive Bayes
-   <p align="justify">Algoritma Bernoulli Naive Bayes untuk membangun model prediksi. Model BernoulliNB() dibuat dan dilatih dengan data training (X_train, y_train). Setelah model dilatih, prediksi dilakukan pada data testing (X_test) dan hasilnya disimpan dalam variabel nb_pred. Akurasi model dihitung menggunakan fungsi accuracy_score dengan membandingkan hasil prediksi terhadap data asli (y_test), kemudian disimpan dalam tabel models pada kolom Naive Bayes. </p>
+   <p align="justify"> Naive Bayes adalah model pembelajaran mesin yang bersifat probabilistik dan digunakan untuk tugas klasifikasi. Inti dari pengklasifikasi ini didasarkan pada teorema Bayes, yang memungkinkan perhitungan probabilitas untuk mengklasifikasikan data. Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset bersifat independen satu sama lain, yang menyederhanakan proses klasifikasi <a href="https://www.geeksforgeeks.org/naive-bayes-classifiers/">[5]</a>. </p>
 
-   ```python  
-    from sklearn.naive_bayes import BernoulliNB
-    # Buat model prediksi dengan Bernoulli Naive Bayes
-    model_nb = BernoulliNB()
-    model_nb.fit(X_train, y_train)
-    # Lakukan prediksi dengan model Naive Bayes
-    nb_pred = model_nb.predict(X_test)
+-  Berikut adalah tahapan implementasi yang:
+    
+    - Algoritma ini menggunakan teorema Bayes dengan asumsi independensi antar fitur.
+    - Model Naive Bayes dilatih dengan data pelatihan dan diuji dengan data uji, dengan akurasi yang dihitung dan disimpan.
 
-    # Hitung metriks akurasi dan simpan hasilnya
-    models.loc['accuracy_score','Naive Bayes'] = accuracy_score(y_test, nb_pred)
-    ```
-
--  Random Forest memiliki kelebihan dan kekurangannya adalah sebagai berikut:
+-  Naive Bayes memiliki kelebihan dan kekurangannya adalah sebagai berikut:
     
     - Kelebihan: Algoritma ini mudah dipahami dan diimplementasikan, menjadikannya pilihan yang baik untuk pemula. Selain itu, Naive Bayes efektif dalam menangani masalah klasifikasi multi-kategori, terutama jika asumsi independensi fitur terpenuhi
     
@@ -425,63 +435,18 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
 
 Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.
 1. Akurasi
-   Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:
-   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png" style="zoom:50%;"><br>
+   Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:<br>
+   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png" style="zoom:50%;">
 2. Precision
-   Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:
-   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png" style="zoom:50%;"><br>
+   Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:<br>
+   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png" style="zoom:50%;">
 3. Recall
-   Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:
-   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png" style="zoom:50%;"><br>
+   Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:<br>
+   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png" style="zoom:50%;">
 4. F1-Score
-   F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:
-   <br><img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png" style="zoom:50%;"><br>
-
-#### Implementasi code
-<p align="justify">Metrik ini dihitung menggunakan classification_report dari library sklearn, yang menghasilkan laporan metrik dalam bentuk dictionary. Setiap metrik untuk masing-masing model kemudian disimpan dalam dictionary models_metrics, di mana akurasi dan nilai metrik lainnya diambil dari bagian "weighted avg" laporan, yang memperhitungkan distribusi kelas yang tidak seimbang. Terakhir, dictionary tersebut dikonversi menjadi DataFrame metrics_df untuk menampilkan hasil dengan format yang lebih terstruktur dan mudah dibaca.</p>
-
-```python  
-    import pandas as pd
-    from sklearn.metrics import classification_report
-
-    # Hitung metrik untuk setiap model
-    knn_report = classification_report(y_test, knn_pred, output_dict=True)
-    svm_report = classification_report(y_test, svm_pred, output_dict=True)
-    rf_report = classification_report(y_test, rf_pred, output_dict=True) 
-    nb_report = classification_report(y_test, nb_pred, output_dict=True)    
-
-    # Ambil akurasi dan metrik lainnya dari laporan
-    models_metrics = {
-      'KNN': {
-        'accuracy': knn_report['accuracy'],
-        'precision': knn_report['weighted avg']['precision'],
-        'recall': knn_report['weighted avg']['recall'],
-        'f1-score': knn_report['weighted avg']['f1-score'],
-      },
-      'SVM': {
-        'accuracy': svm_report['accuracy'],
-        'precision': svm_report['weighted avg']['precision'],
-        'recall': svm_report['weighted avg']['recall'],
-        'f1-score': svm_report['weighted avg']['f1-score'],
-      },
-      'Random Forest': {
-        'accuracy': rf_report['accuracy'],
-        'precision': rf_report['weighted avg']['precision'],
-        'recall': rf_report['weighted avg']['recall'],
-        'f1-score': rf_report['weighted avg']['f1-score'],
-      },
-      'Naive Bayes': {
-        'accuracy': nb_report['accuracy'],
-        'precision': nb_report['weighted avg']['precision'],
-        'recall': nb_report['weighted avg']['recall'],
-        'f1-score': nb_report['weighted avg']['f1-score'],
-      }
-    }
-
-    # Mengubah model metrics menjadi DataFrame untuk tampilan yang lebih baik
-    metrics_df = pd.DataFrame(models_metrics).T
-```
-
+   F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:<br>
+   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png" style="zoom:50%;">
+   
 #### Visualization
 <table>
     <thead>
@@ -529,8 +494,9 @@ Dari tabel diatas menghasilkan grafik berikut:<br>
 <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/grafik.png" style="zoom:50%;"><br>
 
 #### Kesimpulan
-Model yang digunakan untuk melakukan prediksi klasifikasi pada dataset HCV dengan tingkat akurasi paling tinggi menggunakan algoritma Random Forest dan KNN pada model yang telah dibangun.
+Berdasarkan evaluasi model yang dilakukan, proyek ini berhasil menerapkan beberapa model klasifikasi yang mampu memprediksi hasil dengan baik, dengan K-Nearest Neighbor (KNN) dan Random Forest menunjukkan akurasi lebih dari 90%. Hal ini menunjukkan efektivitas solusi yang diusulkan dalam mengatasi masalah dan mencapai tujuan utama, yaitu menciptakan model klasifikasi yang akurat. Meskipun Naive Bayes memiliki akurasi lebih rendah (82.93%), model ini tetap dapat menjadi alternatif yang berguna tergantung pada konteks penggunaannya. Dengan menggunakan berbagai model seperti KNN, SVM, Random Forest, dan Naive Bayes, proyek ini menunjukkan dampak positif dalam hal akurasi dan stabilitas. Pemilihan algoritma yang tepat memberikan hasil yang memuaskan, dan meskipun Naive Bayes kurang unggul dalam akurasi, model ini tetap relevan untuk situasi yang lebih mengutamakan kecepatan berkat efisiensi komputasinya.
 
+  
 ## Referensi
 
 [1] Damayanti. Alfina, Testiana. Gusmelia, "PENERAPAN DATA MINING UNTUK PREDIKSIPENYAKIT HEPATITIS C MENGGUNAKANALGORITMANAÏVE BAYES", 2021, Retrieved from: https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732
