@@ -5,9 +5,7 @@ Disusun oleh: Aditya Septiawan
 Domain yang dipilih untuk proyek machine learning ini adalah sosial, dengan judul "Perbadingan Algortima dalam Memprediksi Penyakit Hepatitis C"
 
 #### Latar Belakang
-<p align="center">
-  <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/kasus%20hepatitis.png" alt="docs12" width="470">
-</p>
+![kasus](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/kasus%20hepatitis.png)
 <br>
 <p align="justify">
 Hepatitis C adalah penyakit infeksi yang menyerang hati akibat virus hepatitis C (HCV) dan dapat berkembang menjadi kondisi serius seperti fibrosis, sirosis, serta kanker hati jika tidak dideteksi dan diobati dengan baik. Penyakit ini sering kali tidak menunjukkan gejala pada tahap awal, sehingga banyak penderita tidak menyadari bahwa mereka terinfeksi hingga terjadi kerusakan hati yang signifikan. Berdasarkan laporan global dari Organisasi Kesehatan Dunia (WHO), diperkirakan 58 juta orang di seluruh dunia menderita infeksi hepatitis C kronis, dengan sekitar 1,5 juta infeksi baru setiap tahunnya. Selain itu, terdapat sekitar 3,2 juta remaja dan anak-anak yang juga terinfeksi hepatitis C kronis. Pada tahun 2019, WHO mencatat bahwa sekitar 290.000 orang meninggal akibat komplikasi hepatitis C, terutama karena sirosis dan kanker hati primer (karsinoma hepatoseluler) <a href="https://journal.stmikjayakarta.ac.id/index.php/JMIJayakarta/article/view/1098/732">[1]</a>. Dengan memanfaatkan machine learning seperti K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Random Forest, dan Naive Bayes dapat membangun sistem pendukung keputusan untuk mengklasifikasikan pasien berdasarkan hasil laboratorium. Model ini akan membantu dokter dalam mendeteksi kondisi hati berdasarkan pola yang ada di data laboratorium, memberikan hasil yang lebih akurat dan efisien dalam menentukan status kesehatan pasien.
@@ -304,7 +302,7 @@ Dataset yang digunakan untuk memprediksi pasien HCV yang diambil dari platform U
 </table>
 
 #### Berikut Visualisasi data dengan Boxplot:<br>
-<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/boxplot.png" style="zoom:50%;" /> <br>
+![Boxplot](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/boxplot.png)
 Interpretasi boxplot untuk data hepatitis C:
 - Boxplot Age: Terdapat outlier pada usia tertentu, namun individu dengan usia tersebut mungkin ada, sehingga data tidak dihapus.
 - Boxplot ALB: Outlier signifikan, tetapi kadar albumin tinggi bisa menunjukkan kesehatan baik, tetap dipertimbangkan.
@@ -317,7 +315,7 @@ Interpretasi boxplot untuk data hepatitis C:
 
 #### Univariate Analysis
 Melakukan proses analisis data univariate pada fitur-fitur numerik. Proses analisis ini menggunakan bantuan visualisasi histogram untuk masing-masing fitur numerik
-<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/univariate.png" style="zoom:50%;" /> <br>
+![Univariate](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/univariate.png)
 Dari data histogram di atas diperoleh informasi, yaitu:
 - Kategori: Distribusi tidak merata, dengan lebih dari 50% data di kategori 0 (Blood Donor) dan 1 (Hepatitis).
 - Usia: Cenderung normal, sebagian besar individu berusia 40-60 tahun, dengan beberapa outlier di usia lebih tua.
@@ -334,11 +332,11 @@ Dari data histogram di atas diperoleh informasi, yaitu:
 
 #### Multivariate Analysis
 Visualisasi dilakukan dengan bantuan library Seaborn menggunakan fungsi pairplot, di mana parameter diag_kind diatur ke kde untuk memperlihatkan perkiraan distribusi probabilitas dari masing-masing fitur numerik serta hubungan antar fitur.
-<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/multivariate.png" style="zoom:80%;" /> <br>
-
+![Multivariate](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/multivariate.png)
 #### Correlation Matrix with Heatmap
 Melakukan pengecekan korelasi antar fitur numerik dengan menggunakan visualisasi diagram heatmap correlation matrix.<br>
-<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/korelasi.png" style="zoom:60%;" /> <br>
+![korelasi](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/korelasi.png)
+
 Penjelasan beberapa poin penting dari matriks ini:
 - ALB dan PROT memiliki korelasi yang paling kuat (0.55), yang menunjukkan bahwa ada hubungan positif yang signifikan antara level Albumin (ALB) dan Protein (PROT).
 - GGT dan AST menunjukkan korelasi positif yang cukup kuat (0.49), mengindikasikan adanya hubungan antara Gamma-Glutamyl Transferase (GGT) dan Aspartate Aminotransferase (AST). Ini bisa relevan secara klinis karena kedua enzim ini sering dikaitkan dengan fungsi hati.
@@ -439,23 +437,19 @@ Teknik yang digunakan dalam persiapan data (Data Preparation) yaitu:
 Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.
 1. Akurasi
    Akurasi mengukur persentase prediksi yang benar dari keseluruhan data uji. Ini adalah metrik yang paling umum digunakan untuk evaluasi model, namun bisa kurang memadai pada dataset yang tidak seimbang. Formula akurasi adalah:<br>
-   
-   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png" style="zoom:50%;">
+   ![akurasi](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/akurasi.png)
    
 2. Precision
    Precision mengukur ketepatan prediksi model, yaitu seberapa banyak prediksi positif yang benar dari keseluruhan prediksi positif yang dihasilkan oleh model. Metrik ini penting ketika kesalahan positif palsu (false positives) lebih kritikal daripada kesalahan negatif palsu. Formula precision adalah:<br>
-   
-   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png" style="zoom:50%;">
+    ![Precision](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/precission.png)
    
 3. Recall
    Recall (juga dikenal sebagai sensitivitas) mengukur kemampuan model untuk mendeteksi seluruh instance positif yang sebenarnya. Ini penting ketika tujuan utama adalah mengurangi kesalahan negatif palsu (false negatives). Formula recall adalah:<br>
-   
-   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png" style="zoom:50%;">
+   ![Recall](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/recall.png)
    
 4. F1-Score
    F1-Score adalah rata-rata harmonis dari precision dan recall, yang memberikan gambaran seimbang tentang model, terutama ketika terdapat trade-off antara precision dan recall. F1-Score sangat berguna pada dataset yang tidak seimbang. Formula F1-Score adalah:<br>
-   
-   <img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png" style="zoom:50%;">
+   ![F1-Score](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/f-1%20score.png)
    
 #### Visualization
 <table>
@@ -501,7 +495,7 @@ Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut
 </table>
 
 Dari tabel diatas menghasilkan grafik berikut:<br>
-<img src="https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/grafik.png" style="zoom:50%;"><br>
+![grafik](https://github.com/Adityas22/predictive-analytics-hepatitis/blob/main/image/grafik.png)
 
 #### Kesimpulan
 Berdasarkan evaluasi model yang dilakukan, proyek ini berhasil menerapkan beberapa model klasifikasi yang mampu memprediksi hasil dengan baik, dengan K-Nearest Neighbor (KNN) dan Random Forest menunjukkan akurasi lebih dari 90%. Hal ini menunjukkan efektivitas solusi yang diusulkan dalam mengatasi masalah dan mencapai tujuan utama, yaitu menciptakan model klasifikasi yang akurat. Meskipun Naive Bayes memiliki akurasi lebih rendah (82.93%), model ini tetap dapat menjadi alternatif yang berguna tergantung pada konteks penggunaannya. Dengan menggunakan berbagai model seperti KNN, SVM, Random Forest, dan Naive Bayes, proyek ini menunjukkan dampak positif dalam hal akurasi dan stabilitas. Pemilihan algoritma yang tepat memberikan hasil yang memuaskan, dan meskipun Naive Bayes kurang unggul dalam akurasi, model ini tetap relevan untuk situasi yang lebih mengutamakan kecepatan berkat efisiensi komputasinya.
