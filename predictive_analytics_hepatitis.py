@@ -226,8 +226,8 @@ print(f'Total # of samples in test dataset: {len(X_test)}')
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
 
 # ## Modelling
