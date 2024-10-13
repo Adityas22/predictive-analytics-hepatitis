@@ -495,7 +495,7 @@ Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut
 </table>
 
 Dari tabel diatas menghasilkan grafik berikut:<br>
-![grafik](https://github.com/Adityas22/predictive-analytics-hepatitis/raw/main/image/grafik.png)
+![grafik](https://github.com/Adityas22/predictive-analytics-hepatitis/raw/main/image/grafikk.png)
 
 #### Kesimpulan
 
