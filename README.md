@@ -452,53 +452,54 @@ Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut
    ![F1-Score](https://github.com/Adityas22/predictive-analytics-hepatitis/raw/main/image/f-1%20score.png)
    
 #### Visualization
-<table>
-    <thead>
-        <tr>
-            <th>Model</th>
-            <th>Accuracy</th>
-            <th>Precision</th>
-            <th>Recall</th>
-            <th>F1-Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>KNN</td>
-            <td>0.902439</td>
-            <td>0.882627</td>
-            <td>0.902439</td>
-            <td>0.885280</td>
-        </tr>
-        <tr>
-            <td>SVM</td>
-            <td>0.894309</td>
-            <td>0.886665</td>
-            <td>0.894309</td>
-            <td>0.887438</td>
-        </tr>
-        <tr>
-            <td>Random Forest</td>
-            <td>0.902439</td>
-            <td>0.876961</td>
-            <td>0.902439</td>
-            <td>0.886146</td>
-        </tr>
-        <tr>
-            <td>Naive Bayes</td>
-            <td>0.829268</td>
-            <td>0.687686</td>
-            <td>0.829268</td>
-            <td>0.751870</td>
-        </tr>
-    </tbody>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KNN</td>
+      <td>0.861789</td>
+      <td>0.781866</td>
+      <td>0.861789</td>
+      <td>0.812318</td>
+    </tr>
+    <tr>
+      <td>SVM</td>
+      <td>0.878049</td>
+      <td>0.787992</td>
+      <td>0.878049</td>
+      <td>0.828218</td>
+    </tr>
+    <tr>
+      <td>Random Forest</td>
+      <td>0.886179</td>
+      <td>0.837234</td>
+      <td>0.886179</td>
+      <td>0.859011</td>
+    </tr>
+    <tr>
+      <td>Naive Bayes</td>
+      <td>0.829268</td>
+      <td>0.687686</td>
+      <td>0.829268</td>
+      <td>0.751870</td>
+    </tr>
+  </tbody>
 </table>
 
 Dari tabel diatas menghasilkan grafik berikut:<br>
 ![grafik](https://github.com/Adityas22/predictive-analytics-hepatitis/raw/main/image/grafik.png)
 
 #### Kesimpulan
-Berdasarkan evaluasi model yang dilakukan, proyek ini berhasil menerapkan beberapa model klasifikasi yang mampu memprediksi hasil dengan baik, dengan K-Nearest Neighbor (KNN) dan Random Forest menunjukkan akurasi lebih dari 90%. Hal ini menunjukkan efektivitas solusi yang diusulkan dalam mengatasi masalah dan mencapai tujuan utama, yaitu menciptakan model klasifikasi yang akurat. Meskipun Naive Bayes memiliki akurasi lebih rendah (82.93%), model ini tetap dapat menjadi alternatif yang berguna tergantung pada konteks penggunaannya. Dengan menggunakan berbagai model seperti KNN, SVM, Random Forest, dan Naive Bayes, proyek ini menunjukkan dampak positif dalam hal akurasi dan stabilitas. Pemilihan algoritma yang tepat memberikan hasil yang memuaskan, dan meskipun Naive Bayes kurang unggul dalam akurasi, model ini tetap relevan untuk situasi yang lebih mengutamakan kecepatan berkat efisiensi komputasinya.
+
+Berdasarkan evaluasi model yang dilakukan, proyek ini berhasil menerapkan beberapa model klasifikasi yang mampu memprediksi hasil dengan baik, dengan Random Forest menunjukkan akurasi tertinggi (88.62%). Hal ini menunjukkan efektivitas solusi yang diusulkan dalam mengatasi masalah dan mencapai tujuan utama, yaitu menciptakan model klasifikasi yang akurat. Sementara itu, K-Nearest Neighbor (KNN) dan Support Vector Machine (SVM) juga memberikan performa yang baik dengan akurasi masing-masing sebesar 86.18% dan 87.80%. Meskipun Naive Bayes memiliki akurasi lebih rendah (82.93%), model ini tetap dapat menjadi alternatif yang berguna tergantung pada konteks penggunaannya. Dengan menggunakan berbagai model seperti KNN, SVM, Random Forest, dan Naive Bayes, proyek ini menunjukkan hasil positif dalam hal akurasi dan stabilitas.
 
   
 ## Referensi
